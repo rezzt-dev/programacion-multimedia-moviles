@@ -4,11 +4,17 @@ plugins {
 }
 
 android {
-  namespace = "com.jgc.ejerciciosvistas"
+  namespace = "com.jgc.ejerciciosbotones"
   compileSdk = 34
 
+  buildFeatures {
+    viewBinding {
+      enable = true
+    }
+  }
+
   defaultConfig {
-    applicationId = "com.jgc.ejerciciosvistas"
+    applicationId = "com.jgc.ejerciciosbotones"
     minSdk = 24
     targetSdk = 34
     versionCode = 1
@@ -31,9 +37,7 @@ android {
     jvmTarget = "1.8"
   }
 
-  buildFeatures {
-    viewBinding = true
-  }
+
 }
 
 dependencies {
