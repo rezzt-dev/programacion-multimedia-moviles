@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/main"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".MainActivity"
+  tools:layout_editor_absoluteX="-38dp"
+  tools:layout_editor_absoluteY="0dp">
+
+  <TextView
+    android:id="@+id/textView"
+    android:layout_width="0dp"
+    android:layout_height="50dp"
+    android:background="#3F50B4"
+    android:backgroundTint="#3F50B4"
+    android:text="  Checkboxes"
+    android:textColor="#FFFFFF"
+    android:textSize="20sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.0" />
+
+  <CheckBox
+    android:id="@+id/chbEducacion"
+    android:layout_width="252dp"
+    android:layout_height="wrap_content"
+    android:text="Educacion"
+    app:layout_constraintBottom_toTopOf="@+id/chbEventos"
+    app:layout_constraintHorizontal_chainStyle="packed"
+    app:layout_constraintStart_toStartOf="@+id/chbCarreras"
+    app:layout_constraintTop_toBottomOf="@+id/chbCarreras" />
+
+  <TextView
+    android:id="@+id/textView2"
+    android:layout_width="252dp"
+    android:layout_height="wrap_content"
+    android:text="Elige tus intereses:"
+    app:layout_constraintBottom_toTopOf="@+id/chbBelleza"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView"
+    app:layout_constraintVertical_bias="0.866"
+    app:layout_constraintVertical_chainStyle="packed" />
+
+  <CheckBox
+    android:id="@+id/chbBelleza"
+    android:layout_width="252dp"
+    android:layout_height="wrap_content"
+    android:text="Belleza"
+    app:layout_constraintBottom_toTopOf="@+id/chbLibrosLiteratura"
+    app:layout_constraintHorizontal_chainStyle="packed"
+    app:layout_constraintStart_toStartOf="@+id/textView2"
+    app:layout_constraintTop_toBottomOf="@+id/textView"
+    app:layout_constraintVertical_chainStyle="packed" />
+
+  <CheckBox
+    android:id="@+id/chbLibrosLiteratura"
+    android:layout_width="252dp"
+    android:layout_height="wrap_content"
+    android:text="Libros y Literatura"
+    app:layout_constraintBottom_toTopOf="@+id/chbCarreras"
+    app:layout_constraintHorizontal_chainStyle="packed"
+    app:layout_constraintStart_toStartOf="@+id/chbBelleza"
+    app:layout_constraintTop_toBottomOf="@+id/chbBelleza" />
+
+  <CheckBox
+    android:id="@+id/chbCarreras"
+    android:layout_width="252dp"
+    android:layout_height="wrap_content"
+    android:text="Carreras"
+    app:layout_constraintBottom_toTopOf="@+id/chbEducacion"
+    app:layout_constraintHorizontal_chainStyle="packed"
+    app:layout_constraintStart_toStartOf="@+id/chbLibrosLiteratura"
+    app:layout_constraintTop_toBottomOf="@+id/chbLibrosLiteratura" />
+
+  <CheckBox
+    android:id="@+id/chbEventos"
+    android:layout_width="252dp"
+    android:layout_height="wrap_content"
+    android:text="Eventos"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintHorizontal_chainStyle="packed"
+    app:layout_constraintStart_toStartOf="@+id/chbEducacion"
+    app:layout_constraintTop_toBottomOf="@+id/chbEducacion" />
+
+  <CheckBox
+    android:id="@+id/chbFamilia"
+    android:layout_width="155dp"
+    android:layout_height="wrap_content"
+    android:text="Familia"
+    app:layout_constraintBottom_toTopOf="@+id/chbComidaBebida"
+    app:layout_constraintStart_toEndOf="@+id/chbBelleza"
+    app:layout_constraintStart_toStartOf="@+id/chbComidaBebida"
+    app:layout_constraintTop_toBottomOf="@+id/textView"
+    app:layout_constraintVertical_bias="0.5"
+    app:layout_constraintVertical_chainStyle="packed" />
+
+  <CheckBox
+    android:id="@+id/chbComidaBebida"
+    android:layout_width="155dp"
+    android:layout_height="wrap_content"
+    android:text="Comida y Bebida"
+    app:layout_constraintBottom_toTopOf="@+id/chbVideojuegos"
+    app:layout_constraintStart_toEndOf="@+id/chbLibrosLiteratura"
+    app:layout_constraintStart_toStartOf="@+id/chbVideojuegos"
+    app:layout_constraintTop_toBottomOf="@+id/chbFamilia"
+    app:layout_constraintVertical_bias="0.5" />
+
+  <CheckBox
+    android:id="@+id/chbVideojuegos"
+    android:layout_width="155dp"
+    android:layout_height="wrap_content"
+    android:text="Videojuegos"
+    app:layout_constraintBottom_toTopOf="@+id/chbDeportes"
+    app:layout_constraintStart_toEndOf="@+id/chbCarreras"
+    app:layout_constraintStart_toStartOf="@+id/chbDeportes"
+    app:layout_constraintTop_toBottomOf="@+id/chbComidaBebida"
+    app:layout_constraintVertical_bias="0.5" />
+
+  <CheckBox
+    android:id="@+id/chbDeportes"
+    android:layout_width="155dp"
+    android:layout_height="wrap_content"
+    android:text="Deportes"
+    app:layout_constraintBottom_toTopOf="@+id/chbArte"
+    app:layout_constraintStart_toEndOf="@+id/chbEducacion"
+    app:layout_constraintStart_toStartOf="@+id/chbArte"
+    app:layout_constraintTop_toBottomOf="@+id/chbVideojuegos"
+    app:layout_constraintVertical_bias="0.5" />
+
+  <CheckBox
+    android:id="@+id/chbArte"
+    android:layout_width="155dp"
+    android:layout_height="wrap_content"
+    android:text="Arte"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="1.0"
+    app:layout_constraintStart_toEndOf="@+id/chbEventos"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/chbDeportes"
+    app:layout_constraintVertical_bias="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
