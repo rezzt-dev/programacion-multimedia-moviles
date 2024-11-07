@@ -1,6 +1,7 @@
 package com.jgc.ejerciciotoolbar
 
 import android.os.Bundle
+import android.view.Menu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,5 +19,21 @@ class MainActivity : AppCompatActivity() {
 
     val toolbar: MaterialToolbar = binding.materialToolbar
     setSupportActionBar(toolbar)
+
+    binding.btAddFragment.setOnClickListener() {
+      val fragmentoEjemplo = EjemploFragment()
+
+      val fragmentTransaction = supportFragmentManager.beginTransaction()
+      fragmentTransaction.replace(R.id.miFragmento, fragmentoEjemplo)
+      fragmentTransaction.commit()
+    }
   }
+
+  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    menuInflater.inflate(R.menu.mi_menu, menu)
+    return true
+  }
+
+  
+
 }
