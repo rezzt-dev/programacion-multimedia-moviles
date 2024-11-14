@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <CheckBoxPreference
+    android:key="pref_checkbox"
+    android:title="Habilitar notificaciones"
+    android:summary="Recibir notificaciones de la aplicación"
+    android:defaultValue="true" />
+  <EditTextPreference
+    android:key="pref_texto"
+    android:title="Nombre de usuario"
+    android:summary="Introduce tu nombre de usuario"
+    android:defaultValue="Usuario" />
+</androidx.preference.PreferenceScreen>
