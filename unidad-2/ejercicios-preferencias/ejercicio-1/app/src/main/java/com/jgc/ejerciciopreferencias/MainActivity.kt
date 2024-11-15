@@ -19,7 +19,5 @@ class MainActivity : AppCompatActivity() {
     val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
     val notificacionHabilitada = sharedPreferences.getBoolean("pref_checkbox", true)
     val nombreUser = sharedPreferences.getString("pref_texto", "Usuario")
-
-
   }
 }

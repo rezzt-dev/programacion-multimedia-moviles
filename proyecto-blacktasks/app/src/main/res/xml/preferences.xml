@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="pref_username"
+        android:title="Nombre de Usuario:"
+        android:summary="Introduce tu Nombre"/>
+
+    <SwitchPreferenceCompat
+        android:key="pref_notifications"
+        android:title="Notificaciones"
+        android:summary="Activar/Desactivar Notificaciones"/>
+</androidx.preference.PreferenceScreen>
