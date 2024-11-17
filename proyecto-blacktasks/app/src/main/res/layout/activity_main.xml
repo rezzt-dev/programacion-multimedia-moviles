@@ -5,8 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/bcMain">
+    android:background="@color/bcMain"
+    app:circularflow_radiusInDP="10dp"
+    tools:context=".MainActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/mainMenu"
@@ -16,28 +17,99 @@
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         android:background="@color/bcMain"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:navigationIcon="@drawable/menu_icon"
-        app:title="BlackTasks"
+        app:title="@string/app_name"
         app:titleCentered="true"
         app:titleTextColor="@color/txtColor" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="174dp"
-        android:layout_marginTop="286dp"
-        android:layout_marginEnd="179dp"
-        android:layout_marginBottom="361dp"
-        android:text="MainActivity"
-        android:textColor="#FFFFFF"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainConstraint"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainMenu" />
+        app:layout_constraintTop_toBottomOf="@+id/mainMenu">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerConstraint"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/controlConstraint"
+            app:layout_constraintEnd_toEndOf="@+id/controlConstraint"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/controlConstraint"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewDrivers"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/bcMain"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/controlConstraint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintCircleRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/containerConstraint">
+
+            <Button
+                android:id="@+id/addTask"
+                android:layout_width="65dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/btnAddColor"
+                android:text="+"
+                android:textSize="24sp"
+                app:cornerRadius="500dp"
+                app:layout_constraintEnd_toStartOf="@+id/deleteTask"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <Button
+                android:id="@+id/deleteTask"
+                android:layout_width="65dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/btnAddColor"
+                android:text="—"
+                android:textSize="24sp"
+                app:cornerRadius="500dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/addTask"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="0dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

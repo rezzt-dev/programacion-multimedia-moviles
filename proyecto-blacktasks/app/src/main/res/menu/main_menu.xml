@@ -8,20 +8,26 @@
         app:showAsAction="ifRoom|withText"/>
 
     <item
+        android:id="@+id/ic_list_window"
+        android:icon="@drawable/list_icon"
+        android:title="@string/list_title"
+        app:showAsAction="ifRoom|withText"/>
+
+    <item
         android:id="@+id/ic_preferences"
         android:icon="@drawable/pref_icon"
-        android:title="Preferencias App"
+        android:title="@string/menu_pref"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/ic_web_page"
         android:icon="@drawable/web_icon"
-        android:title="Visita nuestra Pagina Web"
+        android:title="@string/menu_web"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/ic_acerca_de"
         android:icon="@drawable/info_icon"
-        android:title="Acerca De"
+        android:title="@string/menu_info"
         app:showAsAction="never"/>
 </menu>
