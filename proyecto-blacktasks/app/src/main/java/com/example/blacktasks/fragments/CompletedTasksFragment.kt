@@ -43,7 +43,7 @@ class CompletedTasksFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recycler_view_completed_notes)
 
         // Inicializa el adaptador con una lista mutable vacía de tareas completadas
-        adapter = TaskAdapter(mutableListOf()) // Inicializa tu adaptador con las notas completadas
+        adapter = TaskAdapter(mutableListOf())
 
         // Asigna el adaptador al RecyclerView para que pueda mostrar los datos
         recyclerView.adapter = adapter
@@ -51,10 +51,29 @@ class CompletedTasksFragment : Fragment() {
         // Establece el LayoutManager para el RecyclerView, en este caso, un LinearLayoutManager
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        // Aquí puedes cargar las notas completadas desde tu base de datos o fuente de datos
-        // Ejemplo: adapter.submitList(cargarNotasCompletadas())
+        // Cargar las tareas completadas en el adaptador
+        adapter.submitList(crearTareasCompletadasDeEjemplo())
 
         // Devuelve la vista inflada que representa el fragmento
         return view
+    }
+
+    /**
+     * Crea una lista de tareas de ejemplo que están marcadas como completadas.
+     * Este método puede ser utilizado para simular la carga de tareas
+     * desde una base de datos o fuente de datos externa.
+     *
+     * @return Una lista inmutable de tareas completadas creadas.
+     */
+    private fun crearTareasCompletadasDeEjemplo(): List<Task> {
+        // Crear una lista mutable para almacenar las tareas completadas
+        val tareasCompletadas = mutableListOf<Task>()
+
+        // Agregar tareas de ejemplo a la lista con estado completado (isCompleted = true)
+        tareasCompletadas.add(Task(1, "Tarea Completada 1", "Descripción de la tarea completada 1", true))
+        tareasCompletadas.add(Task(2, "Tarea Completada 2", "Descripción de la tarea completada 2", true))
+        tareasCompletadas.add(Task(3, "Tarea Completada 3", "Descripción de la tarea completada 3", true))
+
+        return tareasCompletadas
     }
 }

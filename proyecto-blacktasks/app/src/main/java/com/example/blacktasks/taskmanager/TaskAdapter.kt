@@ -111,4 +111,15 @@ class TaskAdapter(private val tasks: MutableList<Task>) : RecyclerView.Adapter<T
         tasks.removeAll { it.isCompleted } // Elimina las tareas completadas
         notifyDataSetChanged() // Notifica que los datos han cambiado
     }
+
+    /**
+     * Actualiza la lista de tareas y notifica al RecyclerView que los datos han cambiado.
+     *
+     * @param newTasks La nueva lista de tareas que se mostrará en el RecyclerView.
+     */
+    fun submitList(newTasks: List<Task>) {
+        tasks.clear() // Limpia la lista actual de tareas
+        tasks.addAll(newTasks) // Agrega todas las nuevas tareas a la lista
+        notifyDataSetChanged() // Notifica al RecyclerView que los datos han cambiado
+    }
 }

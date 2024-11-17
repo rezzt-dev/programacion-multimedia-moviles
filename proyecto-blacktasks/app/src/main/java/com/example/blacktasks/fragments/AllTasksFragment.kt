@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.blacktasks.R
+import com.example.blacktasks.taskmanager.Task
 import com.example.blacktasks.taskmanager.TaskAdapter // Asegúrate de tener un adaptador para tus notas
 
 /**
@@ -51,10 +52,31 @@ class AllTasksFragment : Fragment() {
         // Establece el LayoutManager para el RecyclerView, en este caso, un LinearLayoutManager
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        // Aquí puedes cargar todas las notas desde tu base de datos o fuente de datos
-        // Ejemplo: adapter.submitList(cargarNotas())
+        // Cargar las tareas en el adaptador
+        adapter.submitList(crearTareasDeEjemplo())
 
         // Devuelve la vista inflada que representa el fragmento
         return view
+    }
+
+    /**
+     * Crea una lista de tareas de ejemplo y las agrega al adaptador.
+     * Este método puede ser utilizado para simular la carga de tareas
+     * desde una base de datos o fuente de datos externa.
+     *
+     * @return Una lista mutable de tareas creadas.
+     */
+    private fun crearTareasDeEjemplo(): List<Task> {
+        // Crear una lista mutable para almacenar las tareas
+        val tareas = mutableListOf<Task>()
+
+        // Agregar tareas de ejemplo a la lista con identificadores únicos
+        tareas.add(Task(1, "Tarea 1", "Descripción de la tarea 1"))
+        tareas.add(Task(2, "Tarea 2", "Descripción de la tarea 2"))
+        tareas.add(Task(3, "Tarea 3", "Descripción de la tarea 3"))
+        tareas.add(Task(4, "Tarea 4", "Descripción de la tarea 4"))
+        tareas.add(Task(5, "Tarea 5", "Descripción de la tarea 5"))
+
+        return tareas
     }
 }

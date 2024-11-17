@@ -43,7 +43,7 @@ class NoTasksCompletedFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recycler_view_incomplete_notes)
 
         // Inicializa el adaptador con una lista mutable vacía de tareas no completadas
-        adapter = TaskAdapter(mutableListOf()) // Inicializa tu adaptador con las notas no completadas
+        adapter = TaskAdapter(mutableListOf())
 
         // Asigna el adaptador al RecyclerView para que pueda mostrar los datos
         recyclerView.adapter = adapter
@@ -51,10 +51,29 @@ class NoTasksCompletedFragment : Fragment() {
         // Establece el LayoutManager para el RecyclerView, en este caso, un LinearLayoutManager
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        // Aquí puedes cargar las tareas no completadas desde tu base de datos o fuente de datos
-        // Ejemplo: adapter.submitList(cargarNotasNoCompletadas())
+        // Cargar las tareas no completadas en el adaptador
+        adapter.submitList(crearTareasNoCompletadasDeEjemplo())
 
         // Devuelve la vista inflada que representa el fragmento
         return view
+    }
+
+    /**
+     * Crea una lista de tareas de ejemplo que están marcadas como no completadas.
+     * Este método puede ser utilizado para simular la carga de tareas
+     * desde una base de datos o fuente de datos externa.
+     *
+     * @return Una lista inmutable de tareas no completadas creadas.
+     */
+    private fun crearTareasNoCompletadasDeEjemplo(): List<Task> {
+        // Crear una lista mutable para almacenar las tareas no completadas
+        val tareasNoCompletadas = mutableListOf<Task>()
+
+        // Agregar tareas de ejemplo a la lista con estado no completado (isCompleted = false)
+        tareasNoCompletadas.add(Task(1, "Tarea No Completada 1", "Descripción de la tarea no completada 1", false))
+        tareasNoCompletadas.add(Task(2, "Tarea No Completada 2", "Descripción de la tarea no completada 2", false))
+        tareasNoCompletadas.add(Task(3, "Tarea No Completada 3", "Descripción de la tarea no completada 3", false))
+
+        return tareasNoCompletadas
     }
 }
