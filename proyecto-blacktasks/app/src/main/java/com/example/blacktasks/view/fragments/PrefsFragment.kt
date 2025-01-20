@@ -1,4 +1,4 @@
-package com.example.blacktasks.fragments
+package com.example.blacktasks.view.fragments
 
 import android.content.SharedPreferences
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.example.blacktasks
+package com.example.blacktasks.view.activities
 
 import android.app.Activity
 import android.content.Intent
@@ -12,6 +12,7 @@ import androidx.preference.ListPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import androidx.preference.SwitchPreferenceCompat
+import com.example.blacktasks.R
 import com.example.blacktasks.databinding.ActivityPreferencesBinding
 import com.google.android.material.appbar.MaterialToolbar
 import java.util.Locale

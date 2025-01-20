@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PreferencesActivity"
+    tools:context=".view.activities.PreferencesActivity"
     android:background="?attr/colorSurface"
     android:theme="@style/AppTheme">
 
@@ -29,7 +29,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainFragment"
-        android:name="com.example.blacktasks.fragments.PrefsFragment"
+        android:name="com.example.blacktasks.view.fragments.PrefsFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"

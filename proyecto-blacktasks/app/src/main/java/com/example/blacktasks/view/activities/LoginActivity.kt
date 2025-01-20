@@ -1,11 +1,8 @@
-package com.example.blacktasks
+package com.example.blacktasks.view.activities
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.blacktasks.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {

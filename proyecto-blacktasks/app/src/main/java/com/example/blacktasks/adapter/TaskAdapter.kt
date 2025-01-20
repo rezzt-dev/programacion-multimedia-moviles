@@ -1,4 +1,4 @@
-package com.example.blacktasks.taskmanager
+package com.example.blacktasks.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.blacktasks.R
+import com.example.blacktasks.model.Task
 
 /**
  * Adaptador para mostrar y gestionar una lista de tareas en un RecyclerView.
@@ -56,13 +57,13 @@ class TaskAdapter(private val tasks: MutableList<Task>) : RecyclerView.Adapter<T
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val task = tasks[position] // Obtiene la tarea en la posición dada
-        holder.titleTextView.text = task.title // Establece el título de la tarea
-        holder.descriptionTextView.text = task.description // Establece la descripción de la tarea
-        holder.checkBox.isChecked = task.isCompleted // Establece si la tarea está completada según el estado
+        holder.titleTextView.text = task.titulo // Establece el título de la tarea
+        holder.descriptionTextView.text = task.descripcion // Establece la descripción de la tarea
+        holder.checkBox.isChecked = task.realizada // Establece si la tarea está completada según el estado
 
         // Establece el listener para cuando se cambia el estado del checkbox
         holder.checkBox.setOnCheckedChangeListener { _, isChecked ->
-            task.isCompleted = isChecked // Actualiza el estado de la tarea
+            task.realizada = isChecked // Actualiza el estado de la tarea
             // Aquí puedes agregar lógica adicional cuando se marca/desmarca una tarea
         }
     }
@@ -86,7 +87,7 @@ class TaskAdapter(private val tasks: MutableList<Task>) : RecyclerView.Adapter<T
             tasks.toList() // Si la búsqueda está vacía, muestra todas las tareas
         } else {
             tasks.filter {
-                it.title.contains(query, ignoreCase = true) // Filtra por el título de la tarea
+                it.titulo.contains(query, ignoreCase = true) // Filtra por el título de la tarea
             }
         }
         notifyDataSetChanged() // Notifica al RecyclerView que los datos han cambiado
@@ -108,7 +109,7 @@ class TaskAdapter(private val tasks: MutableList<Task>) : RecyclerView.Adapter<T
      */
     @SuppressLint("NotifyDataSetChanged")
     fun removeCheckedItems() {
-        tasks.removeAll { it.isCompleted } // Elimina las tareas completadas
+        tasks.removeAll { it.realizada } // Elimina las tareas completadas
         notifyDataSetChanged() // Notifica que los datos han cambiado
     }
 
@@ -120,6 +121,24 @@ class TaskAdapter(private val tasks: MutableList<Task>) : RecyclerView.Adapter<T
     fun submitList(newTasks: List<Task>) {
         tasks.clear() // Limpia la lista actual de tareas
         tasks.addAll(newTasks) // Agrega todas las nuevas tareas a la lista
+        notifyDataSetChanged() // Notifica al RecyclerView que los datos han cambiado
+    }
+
+    /**
+     * Filtra solo las tareas que no están completadas.
+     */
+    @SuppressLint("NotifyDataSetChanged")
+    fun filterIncompleteTasks() {
+        filteredTasks = tasks.filter { !it.realizada } // Filtra las tareas incompletas
+        notifyDataSetChanged() // Notifica al RecyclerView que los datos han cambiado
+    }
+
+    /**
+     * Filtra solo las tareas que están completadas.
+     */
+    @SuppressLint("NotifyDataSetChanged")
+    fun filterCompletedTasks() {
+        filteredTasks = tasks.filter { it.realizada } // Filtra las tareas completadas
         notifyDataSetChanged() // Notifica al RecyclerView que los datos han cambiado
     }
 }

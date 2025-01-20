@@ -1,4 +1,4 @@
-package com.example.blacktasks.taskmanager
+package com.example.blacktasks.model
 
 /**
  * Representa una tarea dentro de la aplicación.
@@ -9,9 +9,9 @@ package com.example.blacktasks.taskmanager
  * @property description La descripción detallada de la tarea.
  * @property isCompleted Indica si la tarea está completada o no. El valor predeterminado es 'false'.
  */
-data class Task(
-    val id: Int, // Identificador único de la tarea
-    val title: String, // Título de la tarea
-    val description: String, // Descripción detallada de la tarea
-    var isCompleted: Boolean = false // Estado que indica si la tarea está completada (por defecto es 'false')
+data class Task (
+    val id: Int = 0,
+    val titulo: String,
+    val descripcion: String,
+    var realizada: Boolean
 )

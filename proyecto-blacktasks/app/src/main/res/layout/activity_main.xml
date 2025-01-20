@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="?attr/colorSurface"
     app:circularflow_radiusInDP="10dp"
-    tools:context=".MainActivity">
+    tools:context=".view.activities.MainActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/mainMenu"

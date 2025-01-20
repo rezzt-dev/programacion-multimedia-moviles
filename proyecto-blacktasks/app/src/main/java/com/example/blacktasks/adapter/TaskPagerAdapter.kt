@@ -1,12 +1,12 @@
-package com.example.blacktasks.taskmanager
+package com.example.blacktasks.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.blacktasks.fragments.AllTasksFragment
-import com.example.blacktasks.fragments.CompletedTasksFragment
-import com.example.blacktasks.fragments.NoTasksCompletedFragment
+import com.example.blacktasks.view.fragments.AllTasksFragment
+import com.example.blacktasks.view.fragments.CompletedTasksFragment
+import com.example.blacktasks.view.fragments.NoTasksCompletedFragment
 
 /**
  * Adaptador para gestionar los fragmentos dentro de un ViewPager2.

@@ -1,4 +1,4 @@
-package com.example.blacktasks.fragments
+package com.example.blacktasks.view.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.blacktasks.R
-import com.example.blacktasks.taskmanager.Task // Asegúrate de tener una clase Task
-import com.example.blacktasks.taskmanager.TaskAdapter
+import com.example.blacktasks.model.Task // Asegúrate de tener una clase Task
+import com.example.blacktasks.adapter.TaskAdapter
 
 /**
  * Fragmento que muestra las tareas completadas en una lista utilizando un RecyclerView.
@@ -51,29 +51,10 @@ class CompletedTasksFragment : Fragment() {
         // Establece el LayoutManager para el RecyclerView, en este caso, un LinearLayoutManager
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        // Cargar las tareas completadas en el adaptador
-        adapter.submitList(crearTareasCompletadasDeEjemplo())
+        // Filtra las tareas completadas usando el método en el adaptador
+        adapter.filterCompletedTasks()
 
         // Devuelve la vista inflada que representa el fragmento
         return view
-    }
-
-    /**
-     * Crea una lista de tareas de ejemplo que están marcadas como completadas.
-     * Este método puede ser utilizado para simular la carga de tareas
-     * desde una base de datos o fuente de datos externa.
-     *
-     * @return Una lista inmutable de tareas completadas creadas.
-     */
-    private fun crearTareasCompletadasDeEjemplo(): List<Task> {
-        // Crear una lista mutable para almacenar las tareas completadas
-        val tareasCompletadas = mutableListOf<Task>()
-
-        // Agregar tareas de ejemplo a la lista con estado completado (isCompleted = true)
-        tareasCompletadas.add(Task(1, "Tarea Completada 1", "Descripción de la tarea completada 1", true))
-        tareasCompletadas.add(Task(2, "Tarea Completada 2", "Descripción de la tarea completada 2", true))
-        tareasCompletadas.add(Task(3, "Tarea Completada 3", "Descripción de la tarea completada 3", true))
-
-        return tareasCompletadas
     }
 }

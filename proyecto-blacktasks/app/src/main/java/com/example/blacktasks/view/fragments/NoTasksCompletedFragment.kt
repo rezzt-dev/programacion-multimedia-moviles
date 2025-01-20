@@ -1,4 +1,4 @@
-package com.example.blacktasks.fragments
+package com.example.blacktasks.view.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.blacktasks.R
-import com.example.blacktasks.taskmanager.Task // Asegúrate de tener una clase Task
-import com.example.blacktasks.taskmanager.TaskAdapter // Cambia a TaskAdapter
+import com.example.blacktasks.model.Task // Asegúrate de tener una clase Task
+import com.example.blacktasks.adapter.TaskAdapter // Cambia a TaskAdapter
 
 /**
  * Fragmento que muestra las tareas no completadas en una lista utilizando un RecyclerView.
@@ -51,29 +51,10 @@ class NoTasksCompletedFragment : Fragment() {
         // Establece el LayoutManager para el RecyclerView, en este caso, un LinearLayoutManager
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        // Cargar las tareas no completadas en el adaptador
-        adapter.submitList(crearTareasNoCompletadasDeEjemplo())
+        // Filtra las tareas no completadas usando el método en el adaptador
+        adapter.filterIncompleteTasks()
 
         // Devuelve la vista inflada que representa el fragmento
         return view
-    }
-
-    /**
-     * Crea una lista de tareas de ejemplo que están marcadas como no completadas.
-     * Este método puede ser utilizado para simular la carga de tareas
-     * desde una base de datos o fuente de datos externa.
-     *
-     * @return Una lista inmutable de tareas no completadas creadas.
-     */
-    private fun crearTareasNoCompletadasDeEjemplo(): List<Task> {
-        // Crear una lista mutable para almacenar las tareas no completadas
-        val tareasNoCompletadas = mutableListOf<Task>()
-
-        // Agregar tareas de ejemplo a la lista con estado no completado (isCompleted = false)
-        tareasNoCompletadas.add(Task(1, "Tarea No Completada 1", "Descripción de la tarea no completada 1", false))
-        tareasNoCompletadas.add(Task(2, "Tarea No Completada 2", "Descripción de la tarea no completada 2", false))
-        tareasNoCompletadas.add(Task(3, "Tarea No Completada 3", "Descripción de la tarea no completada 3", false))
-
-        return tareasNoCompletadas
     }
 }

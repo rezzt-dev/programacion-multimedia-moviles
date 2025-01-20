@@ -1,4 +1,4 @@
-package com.example.blacktasks
+package com.example.blacktasks.view.activities
 
 import android.content.Intent
 import android.net.Uri
@@ -7,8 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.example.blacktasks.R
 import com.example.blacktasks.databinding.ActivityListBinding
-import com.example.blacktasks.taskmanager.TaskPagerAdapter
+import com.example.blacktasks.adapter.TaskPagerAdapter
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
