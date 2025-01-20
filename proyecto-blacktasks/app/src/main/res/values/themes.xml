@@ -11,4 +11,15 @@
     </style>
 
     <style name="Theme.Blacktasks" parent="Base.Theme.Blacktasks" />
+
+    <!-- aplicacion | tema | modo dia -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Colores principales -->
+        <item name="colorPrimary">@color/colorPrimaryDay</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDarkDay</item>
+        <item name="colorSecondary">@color/colorAccentDay</item>
+        <!-- Fondo general -->
+        <item name="android:windowBackground">@color/backgroundLight</item>
+        <item name="android:textColor">@color/textPrimaryLight</item>
+    </style>
 </resources>

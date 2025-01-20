@@ -4,4 +4,15 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
+    <!-- aplicacion | tema | modo noche -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Colores principales -->
+        <item name="colorPrimary">@color/colorPrimaryNight</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDarkNight</item>
+        <item name="colorSecondary">@color/colorAccentNight</item>
+        <!-- Fondo general -->
+        <item name="android:windowBackground">@color/backgroundDark</item>
+        <item name="android:textColor">@color/textPrimaryDark</item>
+    </style>
 </resources>

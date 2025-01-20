@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "815433724667",
+    "project_id": "escomolon45",
+    "storage_bucket": "escomolon45.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815433724667:android:1cc22e76322879c2cf765e",
+        "android_client_info": {
+          "package_name": "com.jgc.database"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXxDXmOedaBlj-j2vQjbMfYG07Q9EI3jk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -6,4 +6,18 @@
     <color name="txtColor">#FFFFFFFF</color>
     <color name="btnColor">#1F1F1F</color>
     <color name="btnAddColor">#6A6A6A</color>
+
+    <!-- aplicacion | colores | modo dia -->
+    <color name="colorPrimaryDay">#6200EE</color>
+    <color name="colorPrimaryDarkDay">#3700B3</color>
+    <color name="colorAccentDay">#03DAC5</color>
+    <color name="backgroundLight">#FFFFFF</color>
+    <color name="textPrimaryLight">#000000</color>
+
+    <!-- aplicacion | colores | modo noche -->
+    <color name="colorPrimaryNight">#BB86FC</color>
+    <color name="colorPrimaryDarkNight">#3700B3</color>
+    <color name="colorAccentNight">#03DAC5</color>
+    <color name="backgroundDark">#121212</color>
+    <color name="textPrimaryDark">#FFFFFF</color>
 </resources>
