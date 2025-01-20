@@ -10,14 +10,13 @@
     <!-- Sync Preferences -->
     <string name="sync_title">Sync email periodically</string>
     <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
     <string-array name="color_options">
-        <item>Amarillo</item>
-        <item>Verde</item>
-        <item>Azul</item>
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Blue</item>
     </string-array>
 
     <string-array name="language_values">
@@ -41,7 +40,7 @@
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
     <string name="about_title">App Info</string>
-    <string name="about_text">Task management application developed in Android Studio by Juan Garcia Cazallas. Blacktasks is an Android application designed for task management and organization, providing users with an efficient tool to organize their time and activities.</string>
+    <string name="about_text">Task management application developed in Android Studio by Juan Garcia Cazallas. BlackTasks is an Android application designed for task management and organization, providing users with an efficient tool to organize their time and activities.</string>
     <string name="menu_pref">Preferences</string>
     <string name="menu_web">WebPage</string>
     <string name="menu_info">About It</string>
@@ -50,6 +49,16 @@
     <string name="list_all_task">All</string>
     <string name="list_incompleted_task">Incomplete Tasks</string>
     <string name="list_completed_task">Completed Tasks</string>
+
+    <!-- Login Screen -->
+    <string name="login_title">Login</string>
+    <string name="login_username_hint">Enter your username</string>
+    <string name="login_password_hint">Enter your password</string>
+    <string name="login_button">Log In</string>
+    <string name="login_forgot_password">Forgot Password?</string>
+    <string name="login_register_prompt">Don't have an account? Register</string>
+    <string name="login_error_invalid_credentials">Invalid email or password</string>
+    <string name="login_error_empty_fields">Please fill in all fields</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -9,7 +9,7 @@
     <string name="confirm">Confirmer</string>
     <string name="cancel">Annuler</string>
     <string name="about_title">À propos de</string>
-    <string name="about_text">Application de gestion des tâches réalisée dans Android Studio par Juan Garcia Cazallas. Blacktasks est une application Android conçue pour la gestion et l`organisation des tâches, offrant aux utilisateurs un outil efficace pour organiser leur temps et leurs activités.</string>
+    <string name="about_text">Application de gestion des tâches réalisée dans Android Studio par Juan Garcia Cazallas. BlackTasks est une application Android conçue pour la gestion et l'organisation des tâches, offrant aux utilisateurs un outil efficace pour organiser leur temps et leurs activités.</string>
     <string name="menu_pref">Préférences</string>
     <string name="menu_web">Page Web</string>
     <string name="menu_info">À propos</string>
@@ -18,7 +18,6 @@
     <string name="list_all_task">Toutes</string>
     <string name="list_incompleted_task">Tâches incomplètes</string>
     <string name="list_completed_task">Tâches complètes</string>
-
 
     <string-array name="language_values">
         <item>en</item>
@@ -31,4 +30,14 @@
         <item>Espagnol</item>
         <item>Français</item>
     </string-array>
+
+    <!-- Textes pour la fenêtre de connexion -->
+    <string name="login_title">Connexion</string>
+    <string name="login_username_hint">Entrez votre nom d'utilisateur</string>
+    <string name="login_password_hint">Entrez votre mot de passe</string>
+    <string name="login_button">Se Connecter</string>
+    <string name="login_forgot_password">Mot de passe oublié ?</string>
+    <string name="login_register_prompt">Pas de compte ? Inscrivez-vous</string>
+    <string name="login_error_invalid_credentials">Adresse e-mail ou mot de passe invalide</string>
+    <string name="login_error_empty_fields">Veuillez remplir tous les champs</string>
 </resources>
