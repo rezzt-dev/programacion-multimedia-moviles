@@ -56,10 +56,9 @@
     <string name="login_password_hint">Enter your password</string>
     <string name="login_button">Log In</string>
     <string name="login_forgot_password">Forgot Password?</string>
-    <string name="login_register_prompt">Don't have an account? Register</string>
+    <string name="login_register_prompt">Dont have an account? Register</string>
     <string name="login_error_invalid_credentials">Invalid email or password</string>
     <string name="login_error_empty_fields">Please fill in all fields</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_icon_desc">Login icon description</string>
 </resources>

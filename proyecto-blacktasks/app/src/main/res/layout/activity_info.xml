@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".InfoActivity"
     android:background="@color/bcMain"
-    android:theme="@style/Base.Theme.Blacktasks">
+    android:theme="@style/AppTheme">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/mainMenu"

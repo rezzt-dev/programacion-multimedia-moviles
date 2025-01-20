@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">BlackTasks</string>
-    <string name="add_task">Agregar Tarea</string>
-    <string name="search">Buscar</string>
-    <string name="delete_selected">Eliminar Seleccionados</string>
-    <string name="task_title">Título de la Tarea</string>
-    <string name="task_description">Descripción de la Tarea</string>
-    <string name="confirm">Confirmar</string>
-    <string name="cancel">Cancelar</string>
-    <string name="about_title">Acerca de</string>
-    <string name="about_text">Aplicación de gestión de tareas realizada en Android Studio por Juan García Cazallas. BlackTasks es una aplicación para Android diseñada para la administración y manejo de tareas, ofreciendo a los usuarios una herramienta eficiente para organizar su tiempo y actividades.</string>
-    <string name="menu_pref">Preferencias</string>
-    <string name="menu_web">Página Web</string>
-    <string name="menu_info">Acerca de</string>
-    <string name="pref_idiom">Idioma</string>
-    <string name="list_title">Lista de Tareas</string>
-    <string name="list_all_task">Todas</string>
-    <string name="list_incompleted_task">Tareas Incompletas</string>
-    <string name="list_completed_task">Tareas Completas</string>
+    <string name="messages_header">Mensajes</string>
+    <string name="sync_header">Sincronización</string>
+
+    <!-- Preferencias de Mensajes -->
+    <string name="signature_title">Tu firma</string>
+    <string name="reply_title">Acción de respuesta predeterminada</string>
+
+    <!-- Preferencias de Sincronización -->
+    <string name="sync_title">Sincronizar correo electrónico periódicamente</string>
+    <string name="attachment_title">Descargar archivos adjuntos entrantes</string>
+    <string name="attachment_summary_on">Descargar automáticamente los archivos adjuntos de los correos entrantes</string>
+    <string name="attachment_summary_off">Descargar archivos adjuntos solo cuando se solicite manualmente</string>
+
+    <string-array name="color_options">
+        <item>Amarillo</item>
+        <item>Verde</item>
+        <item>Azul</item>
+    </string-array>
 
     <string-array name="language_values">
         <item>en</item>
@@ -31,13 +31,34 @@
         <item>Francés</item>
     </string-array>
 
-    <!-- Textos para la ventana de login -->
+    <string name="app_name">BlackTasks</string>
+    <string name="add_task">Añadir Tarea</string>
+    <string name="search">Buscar</string>
+    <string name="delete_selected">Eliminar Seleccionados</string>
+    <string name="task_title">Título de la Tarea</string>
+    <string name="task_description">Descripción de la Tarea</string>
+    <string name="confirm">Confirmar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="about_title">Información de la Aplicación</string>
+    <string name="about_text">Aplicación de gestión de tareas desarrollada en Android Studio por Juan Garcia Cazallas. BlackTasks es una aplicación Android diseñada para la gestión y organización de tareas, proporcionando a los usuarios una herramienta eficiente para organizar su tiempo y actividades.</string>
+    <string name="menu_pref">Preferencias</string>
+    <string name="menu_web">Página Web</string>
+    <string name="menu_info">Acerca de</string>
+    <string name="pref_idiom">Idioma</string>
+    <string name="list_title">Lista de Tareas</string>
+    <string name="list_all_task">Todas</string>
+    <string name="list_incompleted_task">Tareas Incompletas</string>
+    <string name="list_completed_task">Tareas Completadas</string>
+
+    <!-- Pantalla de Inicio de Sesión -->
     <string name="login_title">Iniciar Sesión</string>
     <string name="login_username_hint">Introduce tu nombre de usuario</string>
     <string name="login_password_hint">Introduce tu contraseña</string>
     <string name="login_button">Iniciar Sesión</string>
     <string name="login_forgot_password">¿Olvidaste tu contraseña?</string>
     <string name="login_register_prompt">¿No tienes una cuenta? Regístrate</string>
-    <string name="login_error_invalid_credentials">Correo o contraseña inválidos</string>
-    <string name="login_error_empty_fields">Por favor, completa todos los campos</string>
+    <string name="login_error_invalid_credentials">Correo electrónico o contraseña inválidos</string>
+    <string name="login_error_empty_fields">Por favor, rellena todos los campos</string>
+
+    <string name="login_icon_desc">Descripción del icono de inicio de sesión</string>
 </resources>

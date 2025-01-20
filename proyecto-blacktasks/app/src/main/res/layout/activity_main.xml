@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bcMain"
+    android:background="?attr/colorSurface"
     app:circularflow_radiusInDP="10dp"
     tools:context=".MainActivity">
 
@@ -16,14 +16,14 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:background="@color/bcMain"
+        android:background="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/menu_icon"
         app:title="@string/app_name"
         app:titleCentered="true"
-        app:titleTextColor="@color/txtColor" />
+        app:titleTextColor="?attr/colorOnPrimary" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainConstraint"
@@ -38,7 +38,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainMenu">
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/containerConstraint"
@@ -55,7 +54,7 @@
                 android:id="@+id/recyclerViewDrivers"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@color/bcMain"
+                android:background="?attr/colorSurface"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -83,33 +82,32 @@
                 android:layout_width="65dp"
                 android:layout_height="70dp"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/btnAddColor"
+                android:backgroundTint="?attr/colorSecondary"
                 android:text="+"
+                android:textColor="?attr/colorOnSecondary"
                 android:textSize="24sp"
                 app:cornerRadius="500dp"
                 app:layout_constraintEnd_toStartOf="@+id/deleteTask"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="0dp" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/deleteTask"
                 android:layout_width="65dp"
                 android:layout_height="70dp"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/btnAddColor"
+                android:backgroundTint="?attr/colorSecondary"
                 android:text="—"
+                android:textColor="?attr/colorOnSecondary"
                 android:textSize="24sp"
                 app:cornerRadius="500dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/addTask"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="0dp" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

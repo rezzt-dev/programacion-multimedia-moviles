@@ -7,9 +7,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.ListPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import androidx.preference.SwitchPreferenceCompat
 import com.example.blacktasks.databinding.ActivityPreferencesBinding
 import com.google.android.material.appbar.MaterialToolbar
 import java.util.Locale
@@ -56,6 +58,14 @@ class PreferencesActivity : AppCompatActivity() {
                 updateLanguage(languageCode)
                 true
             }
+
+            // Configura el listener para el cambio de tema (oscuro/claro)
+            val themeSwitch = findPreference<SwitchPreferenceCompat>("pref_dark_mode")
+            themeSwitch?.setOnPreferenceChangeListener { _, newValue ->
+                val isDarkMode = newValue as Boolean
+                setThemeMode(isDarkMode)
+                true
+            }
         }
 
         /**
@@ -73,6 +83,18 @@ class PreferencesActivity : AppCompatActivity() {
             // Forza la recreación de la actividad principal para aplicar el cambio de idioma
             activity?.setResult(Activity.RESULT_OK)
             activity?.finish()
+        }
+
+        /**
+         * Cambia el tema de la aplicación a modo oscuro o claro.
+         * @param isDarkMode Verdadero si se selecciona el modo oscuro, falso para el modo claro.
+         */
+        private fun setThemeMode(isDarkMode: Boolean) {
+            if (isDarkMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
         }
     }
 

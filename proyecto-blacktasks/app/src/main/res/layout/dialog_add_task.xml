@@ -4,20 +4,27 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:background="?attr/colorSurface">
 
     <EditText
         android:id="@+id/taskTitleEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/task_title"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textColor="?attr/colorOnSurface"
+        android:textColorHint="?attr/colorOnSurface"
+        android:backgroundTint="?attr/colorPrimary" />
 
     <EditText
         android:id="@+id/taskDescriptionEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/task_description"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textColor="?attr/colorOnSurface"
+        android:textColorHint="?attr/colorOnSurface"
+        android:backgroundTint="?attr/colorPrimary" />
 
 </LinearLayout>

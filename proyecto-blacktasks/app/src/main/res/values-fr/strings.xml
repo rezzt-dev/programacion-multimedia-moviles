@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">BlackTasks</string>
-    <string name="add_task">Ajouter une Tâche</string>
-    <string name="search">Rechercher</string>
-    <string name="delete_selected">Supprimer la Sélection</string>
-    <string name="task_title">Titre de la Tâche</string>
-    <string name="task_description">Description de la Tâche</string>
-    <string name="confirm">Confirmer</string>
-    <string name="cancel">Annuler</string>
-    <string name="about_title">À propos de</string>
-    <string name="about_text">Application de gestion des tâches réalisée dans Android Studio par Juan Garcia Cazallas. BlackTasks est une application Android conçue pour la gestion et l'organisation des tâches, offrant aux utilisateurs un outil efficace pour organiser leur temps et leurs activités.</string>
-    <string name="menu_pref">Préférences</string>
-    <string name="menu_web">Page Web</string>
-    <string name="menu_info">À propos</string>
-    <string name="pref_idiom">Langue</string>
-    <string name="list_title">Liste des tâches</string>
-    <string name="list_all_task">Toutes</string>
-    <string name="list_incompleted_task">Tâches incomplètes</string>
-    <string name="list_completed_task">Tâches complètes</string>
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Synchronisation</string>
+
+    <!-- Préférences des Messages -->
+    <string name="signature_title">Votre signature</string>
+    <string name="reply_title">Action de réponse par défaut</string>
+
+    <!-- Préférences de Synchronisation -->
+    <string name="sync_title">Synchroniser les e-mails périodiquement</string>
+    <string name="attachment_title">Télécharger les pièces jointes entrantes</string>
+    <string name="attachment_summary_on">Télécharger automatiquement les pièces jointes pour les e-mails entrants</string>
+    <string name="attachment_summary_off">Télécharger les pièces jointes uniquement sur demande manuelle</string>
+
+    <string-array name="color_options">
+        <item>Jaune</item>
+        <item>Vert</item>
+        <item>Bleu</item>
+    </string-array>
 
     <string-array name="language_values">
         <item>en</item>
@@ -31,13 +31,34 @@
         <item>Français</item>
     </string-array>
 
-    <!-- Textes pour la fenêtre de connexion -->
+    <string name="app_name">BlackTasks</string>
+    <string name="add_task">Ajouter une Tâche</string>
+    <string name="search">Rechercher</string>
+    <string name="delete_selected">Supprimer la Sélection</string>
+    <string name="task_title">Titre de la Tâche</string>
+    <string name="task_description">Description de la Tâche</string>
+    <string name="confirm">Confirmer</string>
+    <string name="cancel">Annuler</string>
+    <string name="about_title">Informations sur lApplication</string>
+    <string name="about_text">Application de gestion de tâches développée dans Android Studio par Juan Garcia Cazallas. BlackTasks est une application Android conçue pour la gestion et lorganisation des tâches, offrant aux utilisateurs un outil efficace pour organiser leur temps et leurs activités.</string>
+    <string name="menu_pref">Préférences</string>
+    <string name="menu_web">Site Web</string>
+    <string name="menu_info">À Propos</string>
+    <string name="pref_idiom">Langue</string>
+    <string name="list_title">Liste des Tâches</string>
+    <string name="list_all_task">Toutes</string>
+    <string name="list_incompleted_task">Tâches Incomplètes</string>
+    <string name="list_completed_task">Tâches Terminées</string>
+
+    <!-- Écran de Connexion -->
     <string name="login_title">Connexion</string>
-    <string name="login_username_hint">Entrez votre nom d'utilisateur</string>
+    <string name="login_username_hint">Entrez votre nom dutilisateur</string>
     <string name="login_password_hint">Entrez votre mot de passe</string>
     <string name="login_button">Se Connecter</string>
     <string name="login_forgot_password">Mot de passe oublié ?</string>
-    <string name="login_register_prompt">Pas de compte ? Inscrivez-vous</string>
-    <string name="login_error_invalid_credentials">Adresse e-mail ou mot de passe invalide</string>
+    <string name="login_register_prompt">Pas de compte ? Sinscrire</string>
+    <string name="login_error_invalid_credentials">Email ou mot de passe invalide</string>
     <string name="login_error_empty_fields">Veuillez remplir tous les champs</string>
+
+    <string name="login_icon_desc">Description de licône de connexion</string>
 </resources>

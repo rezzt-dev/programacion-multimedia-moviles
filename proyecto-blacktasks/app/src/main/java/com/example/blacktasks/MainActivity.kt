@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -46,6 +47,14 @@ class MainActivity : AppCompatActivity() {
 
         setupViews() // Configura los botones y acciones
         setupRecyclerView() // Configura el RecyclerView para mostrar las tareas
+    }
+
+    private fun setDayNight (mode: Int) {
+        if (mode == 0) {
+            delegate.localNightMode = (AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            delegate.localNightMode =  (AppCompatDelegate.MODE_NIGHT_NO)
+        }
     }
 
     /**
