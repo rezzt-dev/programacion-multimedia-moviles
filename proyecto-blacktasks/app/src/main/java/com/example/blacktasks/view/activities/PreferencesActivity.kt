@@ -105,6 +105,13 @@ class PreferencesActivity : AppCompatActivity() {
                 startActivity(intent)
                 return true
             }
+
+            R.id.ic_web_page -> {
+                // Abre una página web en el navegador
+                val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://educamosclm.castillalamancha.es/"))
+                startActivity(webIntent)
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }

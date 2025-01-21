@@ -69,6 +69,13 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
 
+            R.id.ic_web_page -> {
+                // Abre una página web en el navegador
+                val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://educamosclm.castillalamancha.es/"))
+                startActivity(webIntent)
+                return true
+            }
+
             R.id.ic_acerca_de -> {
                 val intent = Intent(this, InfoActivity::class.java)
                 intent.putExtra("USER_ID", idUsuario) // Pasa el ID del usuario
