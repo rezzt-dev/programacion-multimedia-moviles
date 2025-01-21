@@ -4,43 +4,86 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
-import android.text.InputType
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.blacktasks.R
-import com.example.blacktasks.databinding.ActivityMainBinding
 import com.example.blacktasks.adapter.TaskAdapter
-import com.example.blacktasks.model.Task
+import com.example.blacktasks.databinding.ActivityMainBinding
+import com.example.blacktasks.model.Tarea
+import com.example.blacktasks.viewmodel.TareaConexionHelper
 import java.util.Locale
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var adapter: TaskAdapter
+    private var idUsuario: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        applyLanguage() // Aplica el idioma configurado en las preferencias
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.mainMenu) // Establece la barra de herramientas como ActionBar
+        setSupportActionBar(binding.mainMenu)
 
-        setupViews() // Configura los botones y acciones
-        setupRecyclerView() // Configura el RecyclerView para mostrar las tareas
+        // Inicializa SharedPreferences
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+
+        // Obtén el ID del usuario desde SharedPreferences
+        idUsuario = sharedPreferences.getInt("USER_ID", -1)
+
+        if (idUsuario == -1) {
+            showToast("Error: Usuario no válido.")
+            finish()
+            return
+        }
+
+        applyLanguage()
+        setupRecyclerView()
+        loadUserTasks()
+        setupViews()
     }
 
     private fun setupViews() {
-        binding.deleteTask.setOnClickListener { showDeleteConfirmationDialog() } // Acción para eliminar tareas
-        binding.addTask.setOnClickListener { showAddTaskDialog() } // Acción para agregar nuevas tareas
+        binding.addTask.setOnClickListener { showAddTaskDialog() }
+        binding.deleteTask.setOnClickListener { showDeleteConfirmationDialog() }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.ic_preferences -> {
+                val intent = Intent(this, PreferencesActivity::class.java)
+                intent.putExtra("USER_ID", idUsuario) // Pasa el ID del usuario
+                startActivity(intent)
+                return true
+            }
+
+            R.id.ic_acerca_de -> {
+                val intent = Intent(this, InfoActivity::class.java)
+                intent.putExtra("USER_ID", idUsuario) // Pasa el ID del usuario
+                startActivity(intent)
+                return true
+            }
+
+            R.id.ic_list_window -> {
+                val intent = Intent(this, ListActivity::class.java)
+                intent.putExtra("USER_ID", idUsuario) // Pasa el ID del usuario
+                startActivity(intent)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun applyLanguage() {
@@ -54,9 +97,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = TaskAdapter(mutableListOf()) // Crea un adaptador vacío
-        binding.recyclerViewDrivers.adapter = adapter // Asigna el adaptador al RecyclerView
-        binding.recyclerViewDrivers.layoutManager = LinearLayoutManager(this) // Establece el layout manager
+        adapter = TaskAdapter(mutableListOf())
+        binding.recyclerViewDrivers.adapter = adapter
+        binding.recyclerViewDrivers.layoutManager = LinearLayoutManager(this)
     }
 
     private fun showAddTaskDialog() {
@@ -69,11 +112,26 @@ class MainActivity : AppCompatActivity() {
                 val title = titleEditText.text.toString()
                 val description = descriptionEditText.text.toString()
                 if (title.isNotEmpty()) {
-                    addNewTask(title, description) // Si el título no está vacío, agrega la tarea
+                    addNewTask(title, description)
+                } else {
+                    showToast("El título no puede estar vacío.")
                 }
             }
             .setNegativeButton(getString(R.string.cancel), null)
             .show()
+    }
+
+    private fun addNewTask(title: String, description: String) {
+        val newTask = Tarea(0, title, description, false, idUsuario)
+        val taskId = TareaConexionHelper.addTarea(this, newTask)
+        if (taskId != -1L) {
+            newTask.id = taskId.toInt()
+            adapter.addTask(newTask)
+            binding.recyclerViewDrivers.scrollToPosition(adapter.itemCount - 1)
+            showToast("Tarea añadida con éxito.")
+        } else {
+            showToast("Error al añadir la tarea.")
+        }
     }
 
     private fun showDeleteConfirmationDialog() {
@@ -81,61 +139,27 @@ class MainActivity : AppCompatActivity() {
             .setTitle(getString(R.string.delete_selected))
             .setMessage(getString(R.string.confirm))
             .setPositiveButton(getString(R.string.confirm)) { _, _ ->
-                adapter.removeCheckedItems() // Elimina las tareas seleccionadas
+                val tasksToRemove = adapter.getCheckedItems() // Obtiene las tareas seleccionadas
+                for (task in tasksToRemove) {
+                    val rowsDeleted = TareaConexionHelper.delTarea(this, task.id) // Elimina cada tarea por ID
+                    if (rowsDeleted > 0) {
+                        adapter.removeTask(task) // Actualiza el adaptador eliminando la tarea
+                    } else {
+                        showToast("Error al eliminar la tarea con ID: ${task.id}")
+                    }
+                }
+                loadUserTasks() // Recarga las tareas desde la base de datos
             }
             .setNegativeButton(getString(R.string.cancel), null)
             .show()
     }
 
-    private fun showSearchDialog() {
-        val input = EditText(this)
-        input.inputType = InputType.TYPE_CLASS_TEXT
-
-        AlertDialog.Builder(this)
-            .setTitle(getString(R.string.search))
-            .setView(input)
-            .setPositiveButton(getString(R.string.search)) { _, _ ->
-                val searchQuery = input.text.toString()
-                performSearch(searchQuery) // Realiza la búsqueda con la consulta proporcionada
-            }
-            .setNegativeButton(getString(R.string.cancel), null)
-            .show()
+    private fun loadUserTasks() {
+        val userTasks = TareaConexionHelper.obtenerTareasPorUsuario(this, idUsuario)
+        adapter.updateTasks(userTasks)
     }
 
-    private fun performSearch(query: String) {
-        adapter.filter(query) // Filtra las tareas en el adaptador
-    }
-
-    private fun addNewTask(title: String, description: String) {
-        val newTask = Task(adapter.itemCount + 1, title, description, false)
-        adapter.addTask(newTask)
-        binding.recyclerViewDrivers.scrollToPosition(adapter.itemCount - 1)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.ic_preferences -> {
-                val intent = Intent(this, PreferencesActivity::class.java)
-                startActivity(intent) // Inicia la actividad de preferencias
-            }
-            R.id.ic_web_page -> {
-                val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://educamosclm.castillalamancha.es/"))
-                startActivity(webIntent) // Abre la página web en el navegador
-            }
-            R.id.ic_acerca_de -> {
-                val intent = Intent(this, InfoActivity::class.java)
-                startActivity(intent) // Inicia la actividad de información
-            }
-            R.id.ic_list_window -> {
-                val intent = Intent(this, ListActivity::class.java)
-                startActivity(intent) // Inicia la actividad de lista de tareas
-            }
-        }
-        return super.onOptionsItemSelected(item)
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

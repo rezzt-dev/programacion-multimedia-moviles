@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.blacktasks.R
-import com.example.blacktasks.model.Task
+import com.example.blacktasks.model.Tarea
+import com.example.blacktasks.viewmodel.TareaConexionHelper
 
 /**
  * Adaptador para mostrar y gestionar una lista de tareas en un RecyclerView.
@@ -17,10 +19,10 @@ import com.example.blacktasks.model.Task
  *
  * @property tasks La lista mutable de tareas que se mostrará en el RecyclerView.
  */
-class TaskAdapter(private val tasks: MutableList<Task>) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+class TaskAdapter(private val tasks: MutableList<Tarea>) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     // Lista de tareas filtradas para mostrar en el RecyclerView.
-    private var filteredTasks: List<Task> = tasks.toList()
+    private var filteredTasks: List<Tarea> = tasks.toList()
 
     /**
      * Clase que representa un elemento de la vista en el RecyclerView.
@@ -57,16 +59,28 @@ class TaskAdapter(private val tasks: MutableList<Task>) : RecyclerView.Adapter<T
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val task = tasks[position] // Obtiene la tarea en la posición dada
+
         holder.titleTextView.text = task.titulo // Establece el título de la tarea
         holder.descriptionTextView.text = task.descripcion // Establece la descripción de la tarea
-        holder.checkBox.isChecked = task.realizada // Establece si la tarea está completada según el estado
 
-        // Establece el listener para cuando se cambia el estado del checkbox
+        // Configurar el estado del CheckBox
+        holder.checkBox.setOnCheckedChangeListener(null) // Desvincular cualquier listener previo
+        holder.checkBox.isChecked = task.realizada // Establecer el estado actual
+
+        // Establecer nuevo listener
         holder.checkBox.setOnCheckedChangeListener { _, isChecked ->
-            task.realizada = isChecked // Actualiza el estado de la tarea
-            // Aquí puedes agregar lógica adicional cuando se marca/desmarca una tarea
+            task.realizada = isChecked // Actualizar el estado de la tarea
+
+            // Opcional: guardar el cambio en la base de datos
+            guardarEstadoTarea(holder.itemView.context as AppCompatActivity, task)
         }
     }
+
+    private fun guardarEstadoTarea(context: AppCompatActivity, task: Tarea) {
+        TareaConexionHelper.modTarea(context, task.id, task) // Actualiza el estado en la base de datos
+    }
+
+
 
     /**
      * Devuelve el número total de ítems en la lista de tareas.
@@ -98,7 +112,7 @@ class TaskAdapter(private val tasks: MutableList<Task>) : RecyclerView.Adapter<T
      *
      * @param task La tarea a añadir.
      */
-    fun addTask(task: Task) {
+    fun addTask(task: Tarea) {
         tasks.add(task) // Añade la tarea a la lista
         notifyItemInserted(tasks.size - 1) // Notifica que se ha añadido un nuevo ítem
     }
@@ -118,7 +132,7 @@ class TaskAdapter(private val tasks: MutableList<Task>) : RecyclerView.Adapter<T
      *
      * @param newTasks La nueva lista de tareas que se mostrará en el RecyclerView.
      */
-    fun submitList(newTasks: List<Task>) {
+    fun submitList(newTasks: List<Tarea>) {
         tasks.clear() // Limpia la lista actual de tareas
         tasks.addAll(newTasks) // Agrega todas las nuevas tareas a la lista
         notifyDataSetChanged() // Notifica al RecyclerView que los datos han cambiado
@@ -140,5 +154,23 @@ class TaskAdapter(private val tasks: MutableList<Task>) : RecyclerView.Adapter<T
     fun filterCompletedTasks() {
         filteredTasks = tasks.filter { it.realizada } // Filtra las tareas completadas
         notifyDataSetChanged() // Notifica al RecyclerView que los datos han cambiado
+    }
+
+    fun getCheckedItems(): List<Tarea> {
+        return tasks.filter { it.realizada } // Suponiendo que `isChecked` es una propiedad de cada tarea
+    }
+
+    fun removeTask(task: Tarea) {
+        val position = tasks.indexOf(task)
+        if (position != -1) {
+            tasks.removeAt(position)
+            notifyItemRemoved(position) // Notifica que el elemento fue eliminado
+        }
+    }
+
+    fun updateTasks(newTasks: List<Tarea>) {
+        tasks.clear()
+        tasks.addAll(newTasks)
+        notifyDataSetChanged() // Refresca la vista con las nuevas tareas
     }
 }
