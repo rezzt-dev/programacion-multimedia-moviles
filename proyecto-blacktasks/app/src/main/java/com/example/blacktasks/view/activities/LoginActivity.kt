@@ -2,10 +2,13 @@ package com.example.blacktasks.view.activities
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Typeface
 import android.os.Bundle
-import android.widget.Toast
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
+import com.example.blacktasks.R
 import com.example.blacktasks.databinding.ActivityLoginBinding
 import com.example.blacktasks.model.Usuario
 import com.example.blacktasks.viewmodel.UsuarioConexionHelper
@@ -30,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
             val password = binding.editTextTextPassword.text.toString()
 
             if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
+                mostrarDialogoError("Por favor, completa todos los campos")
                 return@setOnClickListener
             }
 
@@ -48,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
                 finish()
             } else {
                 // Credenciales incorrectas
-                Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                mostrarDialogoError("Usuario o contraseña incorrectos")
             }
         }
     }
@@ -56,5 +59,31 @@ class LoginActivity : AppCompatActivity() {
     private fun comprobarCredenciales(username: String, password: String): Usuario? {
         val usuarios = UsuarioConexionHelper.obtenerUsuarios(this)
         return usuarios.find { it.username == username && it.password == password }
+    }
+
+    private fun mostrarDialogoError(mensaje: String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Error")
+        builder.setIcon(R.drawable.error_icon)
+
+        // Crear un TextView personalizado para el mensaje
+        val messageView = TextView(this)
+        messageView.text = mensaje
+        messageView.textSize = 18f
+        messageView.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD)
+        messageView.setPadding(50, 20, 50, 20)
+        messageView.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
+
+        // Añadir el TextView al diálogo
+        builder.setView(messageView)
+
+        // Botón de aceptar
+        builder.setPositiveButton("Aceptar") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        // Mostrar el diálogo
+        val alertDialog = builder.create()
+        alertDialog.show()
     }
 }
